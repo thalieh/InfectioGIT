@@ -1,38 +1,41 @@
 import os
+import csv
 
-# Configuration
+# Directory and file configuration
 source_dir = "AllBiomodels.xml"
-output_file = "liste_modeles_infectieux.txt"
+output_csv = "sorted_infectious_index.csv"
 
-# Keywords
-keywords = [
-    # Pathogenic agents
-    "virus", "bacteria", "pathogen", "fungi", "parasite", "prion",
-    # Processus d'infection
-    "infection", "immune response", "host-pathogen", "viral load", 
-    "epidemic", "transmission", "vaccination", "antibiotic", "antiviral",
-    # Major specific diseases
-    "sars-cov-2", "covid-19", "hiv", "aids", "malaria", "tuberculosis", 
-    "influenza", "flu", "ebola", "cholera", "zika", "dengue", "hepatitis",
-    "pneumonia", "sepsis", "leishmaniasis", "trypanosoma"
-]
-print(f"Analyse des fichiers dans {source_dir}...")
+# Define classification categories for sorting
+categories = {
+    "Viral": ["virus", "sars-cov-2", "hiv", "aids", "influenza", "flu", "ebola", "zika"],
+    "Bacterial": ["bacteria", "tuberculosis", "cholera", "sepsis", "pneumonia"],
+    "Parasitic": ["parasite", "malaria", "leishmaniasis", "trypanosoma"],
+    "General_Infection": ["infection", "pathogen", "immune", "epidemic", "transmission"]
+}
 
-infectious_count = 0
+print(f"Starting classification in {source_dir}...")
 
-with open(output_file, "w") as out:
+with open(output_csv, "w", newline='') as f:
+    writer = csv.writer(f)
+    # Writing the CSV header
+    writer.writerow(["File", "Category", "Keyword_Found"])
+
+    # Iterate through each file in the source directory
     for filename in os.listdir(source_dir):
         if filename.endswith(".xml"):
-            path = os.path.join(source_dir, filename)
+            file_path = os.path.join(source_dir, filename)
             try:
-                with open(path, 'r', encoding='utf-8') as f:
-                    content = f.read().lower()
-                    # Vérification si un mot-clé est présent
-                    if any(word in content for word in keywords):
-                        out.write(f"{filename}\n")
-                        infectious_count += 1
-            except:
-                continue
+                with open(file_path, 'r', encoding='utf-8') as xml_file:
+                    content = xml_file.read().lower()
+                    
+                    # Check keywords for each category
+                    for category, keywords in categories.items():
+                        for word in keywords:
+                            if word in content:
+                                writer.writerow([filename, category, word])
+                                # Move to the next file once a match is found
+                                break 
+            except Exception as e:
+                print(f"Error processing {filename}: {e}")
 
-print(f"Done! {infectious_count} infectious models detected.")
-print(f"The list has been saved to: {output_file}")
+print(f"Done! Sorting index saved to: {output_csv}")
