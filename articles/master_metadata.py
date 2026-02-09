@@ -27,7 +27,7 @@ def fetch_pubmed_with_counter(disease, limit=500):
 
     print(f"--- Recherche PubMed : {disease} ---")
     
-    query = f"({disease}[Title/Abstract] AND model*[Title]) AND English[Language] AND 2015:2026[DP]"
+    query = f"({disease}[Title] AND model*[Title]) AND English[Language] AND 2015:2026[DP]"
     
     # 1. Recherche des IDs
     search_handle = Entrez.esearch(db="pubmed", term=query, retmax=limit)
