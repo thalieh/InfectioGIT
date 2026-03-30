@@ -2,48 +2,6 @@
 
 ## InfectioGIT : A Structured Repository of Models and Metadata for Human Infectious Diseases
 
-**Students :** Aya Sebbah - Diana Bravais - Thalie Holmiere  
-**Master 1 – Bioinformatics & Systems Biology**  
-**Supervisors :** Pr. Anna Niarakis & Dr Virginie Jouffret  
-**Affiliation :** CBI  
-
-**2025-2026**
-
----
-
-# Table of Content
-
-- Table of Content
-- I. Project Context
-- II. General Objective
-- III. Key Steps
-  - 1. Development of a curated catalogue of infectious diseases
-    - A. Selection Criteria
-      - a. Public health priority selection
-      - b. Algorithmic prioritization
-    - B. Selected Diseases (initial panel)
-  - 2. Model Retrieval, Filtering, and Metadata Standardization Pipeline
-    - A. Definition of Search Keywords
-    - B. Retrieval of Models from BioModels
-    - C. State of the Art: Disease-Specific Model Landscape
-      - a. Quantitative Assessment (Model Volume)
-      - b. Model Filtering and Selection
-      - c. Identification of Knowledge Gaps
-    - D. Metadata Acquisition Structuring and Standardization
-    - E. Automated Metadata Enrichment
-- IV. Technical Materials and Architecture
-  - 1. Data Architecture and Repository Structure
-    - A. Materials
-    - B. InfectioGIT GitHub Repository Organization
-    - C. Technical Components and Material
-- V. Constraints and Risks
-  - 1. Functional Constraints
-  - 2. Organizational Constraints
-  - 3. Technical and Data Constraints
-- VI. Final Deliverables
-- Bibliography
-- Annexes
-
 ---
 
 # Project Context
@@ -394,7 +352,5 @@ This process ensures that all models reach a consistent level of annotation qual
 13. Vasilevsky, N. A., Toro, S., Matentzoglu, N., Flack, J. E., Mullen, K. R., Hegde, H., Gehrke, S., Whetzel, P. L., Shwetar, Y., Harris, N. L., Ngu, M. S., Alyea, G. L., Kane, M. S., Roncaglia, P., Sid, E., Thaxton, C. L., Wood, V., Abraham, R. S., Achatz, M. I., … Haendel, M. A. (2025). Mondo: integrating disease terminology across communities. Genetics. https://doi.org/10.1093/genetics/iyaf215
 
 14. Gennari, J. H., König, M., Misirli, G., Neal, M. L., Nickerson, D. P., & Waltemath, D. (2021). OMEX metadata specification (version 1.2). Journal of Integrative Bioinformatics, 18(3). https://doi.org/10.1515/jib-2021-0020
-
-
 
 ---
