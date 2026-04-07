@@ -65,15 +65,21 @@ A Python-based scoring algorithm is to be developed to rank diseases based on:
 
 **National (France) :**
 
-- West Nile virus  
-- Dengue [7]  
-- Chikungunya [8]  
+- West Nile virus : a mosquito-borne flavivirus that can cause fever and, in some cases, severe neurological disease such as meningitis or encephalitis. Most infections are asymptomatic.
+
+- Dengue [7] : a mosquito-borne viral disease (dengue virus) causing high fever, severe headache, and muscle/joint pain; some cases progress to severe dengue with bleeding and shock.
+
+- Chikungunya [8] : a mosquito-borne alphavirus infection characterized by sudden fever and intense joint pain, which can persist for weeks to months. It may also cause rash and fatigue.
+
 
 **International:**
 
-- Mpox [9]  
-- Avian influenza (bird flu) and Measles Influenza [10]  
-- COVID-19 [11]  
+- Mpox [9] : a zoonotic orthopoxvirus infection that causes fever and a distinctive rash with lesions, often with swollen lymph nodes. Transmission occurs through close contact with infected people or animals and contaminated materials.
+
+- Avian influenza (bird flu) and Measles Influenza [10] : a virus primarily circulating in birds that can sometimes infect humans, ranging from mild illness to severe respiratory disease. Human cases are typically linked to exposure to infected birds or contaminated environments.
+
+- COVID-19 [11] : respiratory infectious disease caused by SARS-CoV-2, with symptoms ranging from mild upper-respiratory illness to severe pneumonia and multi-organ complications. It spreads mainly via respiratory droplets/aerosols.
+
 
 ---
 
@@ -283,6 +289,73 @@ These attributes will be automatically injected into the local metadata.json fil
 This process ensures that all models reach a consistent level of annotation quality and remain fully searchable within the InfectioGIT ecosystem.
 
 ---
+
+# Technical Materials and Architecture
+## Data Architecture and Repository Structure
+The primary goal will be to establish a centralized, open-source InfectioGIT GitHub repository. This infrastructure will be designed to host a standardized collection of infectious disease models, ensuring they are logically organized, machine-readable, and fully compliant with FAIR data principles. By partitioning models, metadata, and ontologies, the repository will provide a scalable environment for automated biological research.
+
+### Materials
+- Python 3.14.3, Bioservices and BioPython: Core language and specialized bioinformatics library.
+- SQLite: Lightweight SQL database.
+- AI Assistants (GPT-4o & Gemini 2.0 Flash/Pro): Used for code optimization and technical drafting.
+
+**Development Environment and Language Rationale**
+
+**Programming Language**: The entire data pipeline will be developed in Python 3.14.3.
+
+Python was selected as the core language due to the team’s advanced proficiency and its offers of an extensive ecosystem of specialized bioinformatics packages (e.g., Biopython, Bioservices) that are essential for interfacing with biological databases and processing XML/SBML formats.
+
+### InfectioGIT GitHub Repository Organization
+
+The repository is structured as follows :
+
+``` /InfectioGIT
+   /disease_name/ (e.g., /dengue/): contains disease-specific data.
+       /models/
+	SBML files (mechanistic and mathematical descriptions)
+       /metadata/
+JSON files (indexing, searchability, and interoperability)
+   /ontologies/ for standardized disease mapping.
+       DOID.obo
+       MONDO.owl
+   /scripts/ Python automation tools for retrieval and enrichment.
+   /docs/ Technical documentation and user guides.
+```
+Organizational structure of the InfectioGIT repository
+
+### Technical Components and Material
+
+- SBML Models (.xml) : The scientific core of the project. These machine-readable files provide the mechanistic and mathematical descriptions (ODEs, reaction networks) of infectious processes, ensuring simulation compatibility and reproducibility.
+
+- Metadata Files (.json) : Descriptive files that facilitate efficient indexing, searching, and filtering. They are essential for FAIR compliance, allowing the repository to interact with external bioinformatics services without parsing complex XML code.
+
+- Ontology Files (.obo / .owl) : Semantic resources from DOID and MONDO. They provide a standardized vocabulary to resolve naming ambiguities, support hierarchical classification, and enable precise disease mapping across global databases.
+
+- Python Scripts (.py) : Automation tools used to manage the data lifecycle. These scripts handle model retrieval from BioModels, metadata enrichment, and structural quality control, ensuring the scalability of the curation workflow.
+
+- SQLite Database : A lightweight, portable RDBMS used to index metadata. It was selected for its low deployment overhead, providing a fast and queryable index of the entire model collection.
+
+# Constraints and Risks
+## Functional Constraints 
+The technical framework of the project is strictly defined by the use of Python for automation and data processing scripts, alongside SQLite for database management. These tools are selected to guarantee interoperability and efficiency when handling SBML and JSON file formats, ensuring the resource remains accessible and easy to maintain.
+
+## Organizational Constraints 
+Team coordination is primarily shaped by our dual enrollment in distinct academic tracks and the simultaneous management of the EUR UNITEID program alongside a second tutored project. While the five-month timeframe for this tutored project is ambitious for a project of this scope, we have leveraged these constraints to foster a highly efficient and disciplined workflow. We recognize that our commitment to two academic paths naturally limits the time available compared to a standard curriculum, which has in turn reinforced our need for impeccable organization. Consequently, we rely on collaborative platforms like GitHub to maximize our collective output and ensure steady progress despite the condensed schedule and heavy academic workload.
+
+## Technical and Data Constraints 
+The availability of information is a critical constraint, as BioModels does not cover every infectious virus of interest for this study. This necessitates the documentation and integration of alternative resources such as NCBI, a comprehensive public database for genomic and biomedical information, Zenodo, a multi-disciplinary open-access repository for research datasets, or PubMed, a vast scholarly search engine for academic literature.
+
+Currently, BioModel is open-source but may no longer be available because it is based in the United States due to geopolitical issues.
+
+# Final Deliverables
+
+- A curated collection of SBML infectious disease models and metadata
+- A public GitHub repository (InfectioGIT)
+- A structured and queryable database with a full technical documentation to help researchers to access data 
+- A specifications document, this document outlines the technical specifications, functional requirements, and overall framework of the project.
+- A reproducible pipeline for other diseases (i.e., a standardized workflow that can be reused and adapted for additional diseases).
+
+----
 
 # Bibliography
 
