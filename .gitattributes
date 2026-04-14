@@ -1,4 +1,0 @@
-BioModels_Database_Final/** filter=lfs diff=lfs merge=lfs -text
-Models/** filter=lfs diff=lfs merge=lfs -text
-*.csv filter=lfs diff=lfs merge=lfs -text
-Models/**/Biomodels/** filter=lfs diff=lfs merge=lfs -text
